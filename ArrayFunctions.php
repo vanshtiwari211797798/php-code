@@ -48,9 +48,17 @@
                 // print_r($ar);
 
                 // combine the array -> two array is required - > first array is key and second array is value type
-                $key = range('a', 'f');
-                $value = range(0,5);
-                print_r(array_combine($key, $value));
+                // $key = range('a', 'f');
+                // $value = range(0,5);
+                // print_r(array_combine($key, $value));
 
+                // find the index of array, if array is assosiative then return the key of the array -> if value is available two times then give the index of first value
+                // $arr = ['vansh','tiwari','ayodhya','tiwari'];
+                // print_r(array_search('tiwari',$arr));
+
+
+                // min max and pow method
+
+                // echo rand(0,500);
 
 ?>  
