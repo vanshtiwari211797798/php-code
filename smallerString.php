@@ -2,9 +2,9 @@
     // function strchec($a){
     //     $b = strtolower($a);
     //     if($a==$b){
-    //         echo "String is lower case";
+    //         echo " whole String is lower case";
     //     }else{
-    //         echo "String is uppercaser";
+    //         echo " any charactor of the String is uppercaser";
     //     }
     // }
 
