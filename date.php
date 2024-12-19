@@ -23,5 +23,7 @@
 
     $b= strtotime("10:20a 12 june");
     echo date("Y-m-d h:i:s:a",$b) ."<br>";
+    // including die
+    require_once("dieFunction.php");
    
 ?>
