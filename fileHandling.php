@@ -18,4 +18,10 @@
     // $name = 'vansh tiwari';
     // echo fwrite($res,$name); -> writing the file
     // fclose($res); -> when file is write then close the filea
+
+
+
+    // short hand file handling
+    $data= file_get_contents("cap.jpg");
+    file_put_contents("banana.jpg",$data);
 ?>
