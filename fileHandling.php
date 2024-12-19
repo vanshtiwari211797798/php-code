@@ -17,6 +17,5 @@
     // $res = fopen("hello2.txt",'w');
     // $name = 'vansh tiwari';
     // echo fwrite($res,$name); -> writing the file
-    // fclose($res); -> when file is write then close the file
-    
+    // fclose($res); -> when file is write then close the filea
 ?>
