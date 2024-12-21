@@ -22,6 +22,6 @@
 
 
     // short hand file handling
-    $data= file_get_contents("cap.jpg");
+    $data= file_get_contents("cap.jpg"); 
     file_put_contents("banana.jpg",$data);
 ?>
