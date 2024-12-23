@@ -4,6 +4,11 @@
     // Difference b/w $_SERVER AND $_REQUEST
     // $_SERVER is a super global variable which holds the information about headers, paths, and script locations.
     // $_REQUEST is a super global variable which is widely used to collect data after submitting an HTML form.
+
+    // Difference b/w $_GET AND $_POST
+    // $_GET is an associative array of variables passed to the current script via the URL parameters.
+    // $_POST is an associative array of variables passed to the current script via the HTTP POST method.
+    // get method is alway write in upper case  
 ?>
 
 
