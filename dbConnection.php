@@ -50,4 +50,8 @@ echo "<pre>";
     //     echo "Data is not inserted successfully";
     //     echo mysqli_error($conn);
     // }
+
+
+
+    // task-> create connection and make five table using query and insert five daya in every tables and insert multiple data using concatination(multiQuery and get last ids of the inserted data using mysqli_insert_id() function), table will created in new databases
 ?>
