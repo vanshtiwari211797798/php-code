@@ -1,24 +1,31 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //isset function is used to check if the value is set or not, if i want to validate the form button then i will use isset function
-    if (isset($_POST['submit'])) {
-        if (empty($_POST['name'])) {
-            echo "name is required";
-        } else if (empty($_POST['email'])) {
-            echo "email is required";
-        } else {
-            echo $_POST['name'] . "<br>";
-            echo $_POST['email'];
-        }
-    }
-}
+// $nameerror=$emailerror='';
+// if ($_SERVER['REQUEST_METHOD']=='POST'){
+//     if(isset($_POST['validate'])){
+//         if(empty($_POST['name'])){
+//             $nameerror="name me kuch bharo";
+//         }
+//         elseif(empty($_POST['email'])){
+//             $emailerror="emil me kuch bharo";
+//         }
+//         if(!empty($_POST['name']) && !empty($_POST['email'])){
+//         echo $_POST['name'];
+//         echo $_POST['email'];
+//         }
+       
+//     }
+// }
+
+
 
 
 ?>
-<form action="" method="post">
-    <!-- here three input type name phone email -->
-    <input type="text" name="name" placeholder="name">
-    <input type="email" name="email" placeholder="email">
-    <input type="submit" name="submit">
-
+<form action="invalidPost.php" method="post">
+    Name: <input type="text" name="name"><br>
+    <small style="color:red"><?= isset($_GET['nameErr']) ? $_GET['nameErr'] : '' ?></small><br>
+    emil: <input type="email" name="email"><br>
+    <small style="color:red"><?= isset($_GET['emailErr']) ? $_GET['emailErr'] : '' ?></small><br>
+    Pass: <input type="password" name="password"><br>
+    <small style="color:red"><?= isset($_GET['passwordErr']) ? $_GET['passwordErr'] : '' ?></small><br>
+     <input type="submit" name="validate" value="validation">
 </form>
