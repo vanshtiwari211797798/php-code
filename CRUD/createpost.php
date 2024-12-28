@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (mysqli_query($conn, $sql)) {
             echo "<script>
             alert('Data inserted successfully');
-             window.location.href = 'Create.php';
+             window.location.href = 'Read.php';
         </script>";
         } else {
             echo mysqli_error($conn);
