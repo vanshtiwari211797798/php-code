@@ -41,6 +41,7 @@
         <th>Phone</th>
         <th>Email</th>
         <th>Message</th>
+        <th>Update</th>
         <th>Remove</th>
       </tr>
     </thead>
@@ -59,6 +60,7 @@
         <td><?= $record['phone']?></td>
         <td><?= $record['email']?></td>
         <td><?= $record['message']?></td>
+        <td><a href="updateContact.php?id=<?= $record['id']?>">Edit</a></td>
         <td><button onclick="handleDelete(<?= $record['id']?>)">Delete</button></td>
       </tr>
       <?php
