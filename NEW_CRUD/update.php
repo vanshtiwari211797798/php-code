@@ -216,8 +216,8 @@ if (isset($_GET['id'])) {
                     <div class="form-group">
                         <label>Subject</label>
                         <!-- in_array('hindi',$array_name), it check that hindi value is exist in the array if is available then return true else false -->
-                        <input type="checkbox" name="subject[]" value="hindi" <?= in_array('hindi', $subject) ? 'checked':'' ?>> hindi
-                        <input type="checkbox" name="subject[]" value="english" <?= in_array('english', $subject) ? 'checked':'' ?>> english
+                        <input type="checkbox" name="subject[]" value="hindi" <?= in_array('hindi', $subject) ? 'checked' : '' ?>> hindi
+                        <input type="checkbox" name="subject[]" value="english" <?= in_array('english', $subject) ? 'checked' : '' ?>> english
 
                     </div>
                     <div class="form-group">
