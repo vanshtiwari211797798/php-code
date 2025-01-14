@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect('localhost','root','','crud1');
+$conn = mysqli_connect('localhost','root','','file_task');
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         if(empty($_POST['name'])){
             echo "
@@ -8,33 +8,19 @@ $conn = mysqli_connect('localhost','root','','crud1');
                 window.location.href = 'contact.php';
             </script>
             ";
-        }elseif(empty($_POST['phone'])){
+        }elseif(empty($_FILES['image']['name'])){
             echo "
             <script>
-                alert('phone is required');
-                window.location.href = 'contact.php';
-            </script>
-            ";
-        }elseif(empty($_POST['email'])){
-            echo "
-            <script>
-                alert('email is required');
-                window.location.href = 'contact.php';
-            </script>
-            ";
-        }elseif(empty($_POST['message'])){
-            echo "
-            <script>
-                alert('message is required');
+                alert('image is required');
                 window.location.href = 'contact.php';
             </script>
             ";
         }else{
             $name = $_POST['name'];
-            $phone = $_POST['phone'];
-            $email = $_POST['email'];
-            $message = $_POST['message'];
-            $sql = "insert into contact(name,phone,email,message) value ('$name', '$phone','$email','$message')";
+            $filename = time().$_FILES['image']['name'];
+            $tmpname = $_FILES['image']['tmp_name'];
+            move_uploaded_file($tmpname, "../uploads/$filename");
+            $sql = "insert into user(name,image) value ('$name', '$filename')";
 
             if(mysqli_query($conn, $sql)){
                 echo "

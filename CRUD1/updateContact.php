@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect('localhost','root','','crud1');
+$conn = mysqli_connect('localhost','root','','file_task');
 // updated query here
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if(empty($_POST['name'])){
@@ -9,31 +9,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             </script>
         ";
 
-    }elseif(empty($_POST['phone'])){
+    }elseif(empty($_FILES['image']['name'])){
         echo "
         <script>
-            alert('phone is required');
-        </script>
-    ";
-    }elseif(empty($_POST['email'])){
-        echo "
-        <script>
-            alert('email is required');
-        </script>
-    ";
-    }elseif(empty($_POST['message'])){
-        echo "
-        <script>
-            alert('message is required');
+            alert('img is required');
         </script>
     ";
     }else{
         $id = $_POST['uid'];
+        $old = $_POST['oldimg'];
         $name = $_POST['name'];
-        $phone = $_POST['phone'];
-        $email = $_POST['email'];
-        $message = $_POST['message'];
-        $sql = "update contact set name='$name', phone='$phone', email='$email', message='$message' where id=$id";
+        $sql = "update user set name='$name', phone='$phone' where id=$id";
         echo $id, $name, $phone, $email, $message;
         if(mysqli_query($conn,$sql)){
             echo "
@@ -50,7 +36,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 // set the data in form
 if(isset($_GET['id'])){
     $id = $_GET['id'];
-    $sql = "select * from contact where id=$id";
+    $sql = "select * from user where id=$id";
     $res = mysqli_query($conn, $sql);
    if(mysqli_num_rows($res) > 0){
     $record = mysqli_fetch_assoc($res);
@@ -114,21 +100,14 @@ if(isset($_GET['id'])){
   <h2 style="text-align: center;">Contact Form</h2>
   <form  method="POST">
     <input type="hidden" name="uid" value="<?=$record['id']?>">
+    <input type="hidden" name="oldimg" value="<?=$record['image']?>">
     <div class="form-group">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" value="<?=$record['name']?>" placeholder="Enter your name" >
     </div>
     <div class="form-group">
-      <label for="phone">Phone:</label>
-      <input type="tel" id="phone" name="phone" value="<?=$record['phone']?>" placeholder="Enter your phone number" >
-    </div>
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" value="<?=$record['email']?>" placeholder="Enter your email" >
-    </div>
-    <div class="form-group">
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" rows="4" placeholder="Write your message here" ><?=$record['message']?></textarea>
+      <label for="phone">img:</label>
+      <input type="file" multiple id="phone" name="image[]"  />
     </div>
     <button type="submit">Submit</button>
   </form>

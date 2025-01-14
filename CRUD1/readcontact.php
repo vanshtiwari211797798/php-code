@@ -38,17 +38,15 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>Message</th>
+        <th>Image</th>
         <th>Update</th>
         <th>Remove</th>
       </tr>
     </thead>
     <tbody>
         <?php
-            $conn = mysqli_connect('localhost','root','','crud1');
-            $sql = 'select * from contact';
+            $conn = mysqli_connect('localhost','root','','file_task');
+            $sql = 'select * from user';
             $res = mysqli_query($conn, $sql);
             if(mysqli_num_rows($res) > 0){
                 while($record = mysqli_fetch_assoc($res)){
@@ -57,9 +55,7 @@
         ?>
       <tr>
         <td><?= $record['name']?></td>
-        <td><?= $record['phone']?></td>
-        <td><?= $record['email']?></td>
-        <td><?= $record['message']?></td>
+        <td><img src="../uploads/<?= $record['image']?>" alt="" height="50px"></td>
         <td><a href="updateContact.php?id=<?= $record['id']?>">Edit</a></td>
         <td><button onclick="handleDelete(<?= $record['id']?>)">Delete</button></td>
       </tr>
