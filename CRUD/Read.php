@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['user'])){
+        header('Location:signup.php');
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,6 +84,7 @@
 <body>
     <div class="table-container">
         <a href="Create.php">Create Data</a>
+        <a href="logout.php" id="logout">LogOut</a>
         <table>
             <thead>
                 <tr>
@@ -112,6 +121,13 @@
             </tbody>
         </table>
     </div>
+
+    <script>
+        let lgOut = document.getElementById('logout');
+        setTimeout(() => {
+            lgOut.click();
+        }, 10000);
+    </script>
 </body>
 
 </html>

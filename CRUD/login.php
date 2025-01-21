@@ -1,11 +1,26 @@
 <?php
-    session_start();
-    if(isset($_SESSION['email'])){
-        header('Location:read.php');
+  session_start();
+  if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+
+    if($email == 'vansh@gmail.com' && $phone == '1234'){
+       $_SESSION['email']=$email;
+       echo "
+        <script>
+            alert('Login successfully');
+        </script>
+       ";
+        header('Location:Read.php');
+    }else{
+        echo "
+        <script>
+            alert('Invalid creadential');
+        </script>
+       "; 
     }
+  }  
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +46,7 @@
         }
 
     .main-container {
-            min-height: 400px;
+            min-height: 210px;
             width: 100%;
             max-width: 800px;
             background-color: #eeeeee;
@@ -183,21 +198,9 @@
 <body>
     <div class="main-container">
         <!-- Form Section Start -->
-        <form action="createpost.php" method="post">
-            <h2 class="reg-heading"> REGISTRATION</h2>
+        <form  method="post">
+            <h2 class="reg-heading"> LOGIN</h2>
 
-            <div class="input-row">
-
-                <div class="input-box">
-                    <label for="name" class="reg-label">First Name:</label>
-                    <input type="text" class="reg-input" name="fname">
-                </div>
-                <div class="input-box">
-                    <label for="name" class="reg-label">Last Name:</label>
-                    <input type="text" class="reg-input" name="lname">
-                </div>
-
-            </div>
 
 
             <div class="input-row">
@@ -215,11 +218,11 @@
 
             <!-- <div class="button"> -->
             <div class="button">
-                <button type="submit" class="reg-button">CREATE ACCOUNT</button>
+                <button type="submit" class="reg-button">LOGIN</button>
             </div>
             <!-- </div> -->
             <div class="reg-link">
-                <h5 class="reg-h5">Already Have a Account? <a href="#">Login</a></h5>
+                <h5 class="reg-h5">Dont Have a Account? <a href="Create.php">Signup</a></h5>
             </div>
         </form>
         <!-- Form Section End -->

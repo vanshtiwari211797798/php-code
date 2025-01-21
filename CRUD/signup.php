@@ -1,20 +1,69 @@
 <?php
-    session_start();
-    if(isset($_SESSION['email'])){
-        header('Location:read.php');
+$conn = mysqli_connect('localhost', 'root', '', 'allDataBase');
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (empty($_POST['email'])) {
+        echo "<script>
+        alert('email is required');
+        </script>";
+    } elseif (empty($_POST['name'])) {
+        echo "<script>
+        alert('name is required');
+        </script>";
+    } elseif (empty($_POST['password'])) {
+        echo "<script>
+        alert('password is required');
+        </script>";
+    } elseif (empty($_POST['c_password'])) {
+        echo "<script>
+        alert('cnf passsword is required');
+        </script>";
+    } else {
+        $email = $_POST['email'];
+        $name = $_POST['name'];
+        $password = $_POST['password'];
+        $c_pass = $_POST['c_password'];
+        if (!empty($email)) {
+            $sql = "select * from users where email='$email'";
+            $res = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($res) > 0) {
+                echo "
+                <script>
+                    alert('user allready exist');
+                </script>
+            ";
+            } elseif ($password != $c_pass) {
+                echo "
+                <script>
+                    alert('password and confirm password are not matched');
+                </script>
+            ";
+            } else {
+                $sql = "insert into users (email, name, password) values ('$email','$name','$password')";
+                if (mysqli_query($conn, $sql)) {
+                    echo "
+                        <script>
+                            alert('Account created successfully');
+                            window.location.href='login2.php';
+                        </script>
+                    ";
+                }
+            }
+        }
     }
+    // function senitize($data){
+    //     $senitze = trim($data);
+    //     $senitze = htmlspecialchars($senitze);
+    //     return $senitze;
+    // }
+}
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration</title>
+    <title>Document</title>
     <style>
         * {
             margin: 0px;
@@ -30,7 +79,7 @@
 
         }
 
-    .main-container {
+        .main-container {
             min-height: 400px;
             width: 100%;
             max-width: 800px;
@@ -183,48 +232,42 @@
 <body>
     <div class="main-container">
         <!-- Form Section Start -->
-        <form action="createpost.php" method="post">
-            <h2 class="reg-heading"> REGISTRATION</h2>
-
+        <form action="" method="post">
+            <h2 class="reg-heading"> sign in</h2>
             <div class="input-row">
-
-                <div class="input-box">
-                    <label for="name" class="reg-label">First Name:</label>
-                    <input type="text" class="reg-input" name="fname">
-                </div>
-                <div class="input-box">
-                    <label for="name" class="reg-label">Last Name:</label>
-                    <input type="text" class="reg-input" name="lname">
-                </div>
 
             </div>
-
-
             <div class="input-row">
-
-                <div class="input-box">
-                    <label for="name" class="reg-label">Phone:</label>
-                    <input type="number" class="reg-input" name="phone">
-                </div>
                 <div class="input-box">
                     <label for="name" class="reg-label">Email:</label>
                     <input type="email" class="reg-input" name="email">
                 </div>
-
+                <div class="input-box">
+                    <label for="name" class="reg-label">Name:</label>
+                    <input type="text" class="reg-input" name="name">
+                </div>
+            </div>
+            <div class="input-row">
+                <div class="input-box">
+                    <label for="name" class="reg-label">password:</label>
+                    <input type="password" class="reg-input" name="password">
+                </div>
+                <div class="input-box">
+                    <label for="name" class="reg-label"> con-Password:</label>
+                    <input type="text" class="reg-input" name="c_password">
+                </div>
             </div>
 
-            <!-- <div class="button"> -->
             <div class="button">
-                <button type="submit" class="reg-button">CREATE ACCOUNT</button>
+                <div class="button">
+                    <button type="submit" class="reg-button">sign up</button>
+                </div>
             </div>
-            <!-- </div> -->
             <div class="reg-link">
                 <h5 class="reg-h5">Already Have a Account? <a href="#">Login</a></h5>
             </div>
         </form>
         <!-- Form Section End -->
-    </div>
-
 </body>
 
 </html>

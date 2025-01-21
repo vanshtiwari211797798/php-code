@@ -1,7 +1,6 @@
 <?php
+
 $conn = mysqli_connect('localhost', 'root', '', 'crud');
-
-
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($_POST['fname'])) {
@@ -33,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (mysqli_query($conn, $sql)) {
             echo "<script>
             alert('Data inserted successfully');
-             window.location.href = 'Read.php';
+             window.location.href = 'login.php';
         </script>";
         } else {
             echo mysqli_error($conn);

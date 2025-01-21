@@ -1,6 +1,6 @@
 <?php
 session_start();
-    $_SESSION['user']='vansh';
+    // $_SESSION['user']='vansh';
     $_SESSION['pass']='211797';
     // print_r($_SESSION);
     // for delete specific session
