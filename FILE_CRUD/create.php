@@ -2,7 +2,6 @@
 // file uploading method
 // move_uploaded_file() -> it contain two parameters first is the source file (tmp name) and second is the destination file
 $conn = mysqli_connect('localhost', 'root', '', 'file_uploading');
-print_r($_FILES);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($_POST['name'])) {
         echo "

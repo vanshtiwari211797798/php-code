@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         }
 
-        .main-container {
+    .main-container {
             min-height: 400px;
             width: 100%;
             max-width: 800px;
