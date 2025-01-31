@@ -11,6 +11,7 @@ class ClassName
     public $lname = 'vansh Tiwari';
     //property, method
     function demo()
+    // absstr, inhert, encap, polymorphism
     {
         // this is method
         $name = 'Hello word from inside of the class and method'; // this is varibale
